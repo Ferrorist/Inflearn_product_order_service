@@ -17,4 +17,9 @@
 
 - 2024-08-21
   - [상품 조회 API 생성](https://github.com/Ferrorist/Inflearn_product_order_service/commit/0d333a792f2b1301e1d8688c30c18f0450d31095)
-  
+
+  - [상품 수정 POJO 기능 생성](
+    https://github.com/Ferrorist/Inflearn_product_order_service/commit/14f93baef3b6f7529962c220d5f63c1afb9f0513
+  )
+
+  - [2024.08.21 md 추가](./Docs/records/20240821.md)
