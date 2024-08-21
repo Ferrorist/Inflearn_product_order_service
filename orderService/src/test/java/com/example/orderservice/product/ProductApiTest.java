@@ -1,6 +1,8 @@
 package com.example.orderservice.product;
 
+import static com.example.orderservice.product.ProductSteps.*;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,22 +30,20 @@ class ProductApiTest extends APITest {
 
     }
 
-    private static ExtractableResponse<Response> 상품등록요청(AddProductRequest request) {
-        final ExtractableResponse<Response> response = RestAssured.given().log().all()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(request)
-            .when()
-            .post("/products")
-            .then()
-            .log().all().extract();
-        return response;
-    }
+    @Test
+    void 상품조회() {
+        ProductSteps.상품등록요청(ProductSteps.상품등록요청_생성());
+        Long productId = 1L;
 
-    private static AddProductRequest 상품등록요청_생성() {
-        final String name = "상품명";
-        final int price = 1_000;
-        final DiscountPolicy discountPolicy = DiscountPolicy.NONE;
-        return new AddProductRequest(name, price, discountPolicy);
+        final ExtractableResponse<Response> response = RestAssured.given().log().all()
+            .when()
+            .get("/products/{productId}", productId)
+            .then().log()
+            .all()
+            .extract();
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+		assertEquals("상품명", response.jsonPath().getString("name"));
     }
 
 }
