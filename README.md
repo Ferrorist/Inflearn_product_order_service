@@ -14,3 +14,7 @@
 ## 타임라인
 - 2024-08-13
   - 공부 시작
+
+- 2024-08-21
+  - [상품 조회 API 생성](https://github.com/Ferrorist/Inflearn_product_order_service/commit/0d333a792f2b1301e1d8688c30c18f0450d31095)
+  
